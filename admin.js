@@ -107,7 +107,11 @@ function removeProductImage(productId) {
 
 function getMedia() {
   const stored = localStorage.getItem(STORAGE_KEYS.media);
-  return stored ? JSON.parse(stored) : { youtube: [], instagram: [], facebook: '' };
+  let media = stored ? JSON.parse(stored) : {};
+  if (!media.youtube) media.youtube = [];
+  if (!media.instagram) media.instagram = [];
+  if (!media.facebook) media.facebook = '';
+  return media;
 }
 
 function saveMedia(media) {

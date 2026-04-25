@@ -305,7 +305,7 @@ function csvToProducts(csvText) {
 
     // Columns:
     // A वीडियो डेट, B कपड़े का नाम, C वैरायटी, D रेट, E कट, F पन्ना,
-    // G मुख्य जानकारी, H Image URL (optional), I YT Link (optional)
+    // G मुख्य जानकारी, H Image URL (optional), I (Empty), J YT Link (optional)
     const rawDate = row[0] || '';
     const name = row[1] || '';
     const variety = row[2] || '';
@@ -314,7 +314,7 @@ function csvToProducts(csvText) {
     const panna = row[5] || '';
     const info = row[6] || '';
     const image = row[7] || '';
-    const ytLink = row[8] || '';
+    const ytLink = row[9] || row[8] || '';
 
     if (!name.trim()) continue;
 
@@ -701,6 +701,7 @@ function renderProducts() {
       <div class="product-empty">
         <div class="empty-icon">📦</div>
         <p>इस कैटेगरी में कोई प्रोडक्ट नहीं मिला</p>
+        <p style="font-size:0.85rem;margin-top:10px;">माल की list load नहीं हो रही? <a href="https://wa.me/917043830602" target="_blank" style="color:var(--gold);">WhatsApp करें: 7043830602</a></p>
       </div>
     `;
     return;
@@ -717,7 +718,7 @@ function renderProducts() {
 
 function renderGrid(container, products) {
   const isMobile = window.innerWidth < 768;
-  const initialCount = isMobile ? 3 : 6;
+  const initialCount = 6;
   const showViewAll = products.length > initialCount;
   const visibleProducts = showViewAll ? products.slice(0, initialCount) : products;
 
@@ -727,8 +728,8 @@ function renderGrid(container, products) {
     </div>
     ${showViewAll ? `
       <div class="view-all-wrapper" id="viewAllProducts">
-        <button class="btn btn-gold view-all-btn" onclick="showAllProducts()">
-          📦 सभी ${products.length} प्रोडक्ट देखें →
+        <button class="btn btn-gold view-all-btn" onclick="loadMoreProducts()">
+          और 6 देखें (${products.length - initialCount} और) →
         </button>
       </div>
     ` : ''}
@@ -736,6 +737,36 @@ function renderGrid(container, products) {
 
   // Store full list for expand
   window._allFilteredProducts = products;
+  window._loadedCount = initialCount;
+}
+
+function loadMoreProducts() {
+  const products = window._allFilteredProducts || [];
+  const grid = document.getElementById('productGridInner');
+  const viewAllBtn = document.getElementById('viewAllProducts');
+  if (!grid) return;
+
+  const loaded = window._loadedCount || 6;
+  const nextBatch = products.slice(loaded, loaded + 6);
+  const newLoaded = loaded + nextBatch.length;
+  window._loadedCount = newLoaded;
+
+  // Append new cards
+  nextBatch.forEach(p => {
+    grid.insertAdjacentHTML('beforeend', createProductCard(p, false));
+  });
+
+  // Update or remove button
+  if (newLoaded >= products.length) {
+    if (viewAllBtn) viewAllBtn.remove();
+  } else {
+    viewAllBtn.innerHTML = `
+      <button class="btn btn-gold view-all-btn" onclick="loadMoreProducts()">
+        और 6 देखें (${products.length - newLoaded} और) →
+      </button>
+    `;
+  }
+  setTimeout(() => initScrollReveal(), 100);
 }
 
 function showAllProducts() {
@@ -792,12 +823,7 @@ function renderTimeline(container, products) {
 function createProductCard(product) {
   const whatsappNum = getWhatsAppNumber();
   const orderMsg = encodeURIComponent(
-    `नमस्ते, मुझे bulk में यह कपड़ा चाहिए:\n\n` +
-    `📦 ${product.name} (${product.nameEn})\n` +
-    `📏 वैराइटी: ${product.variety}\n` +
-    `💰 रेट: ${product.rate}\n` +
-    `⚖️ Requirement: Per KG / Parcel\n\n` +
-    `कृपया minimum qty और उपलब्धता बताएं।`
+    `नमस्ते! मुझे ${product.name} (${product.category}, ${product.rate}) के बारे में bulk enquiry करनी है।`
   );
 
   // Image priority: Manual upload > YT thumbnail > Gradient
@@ -805,20 +831,36 @@ function createProductCard(product) {
   const manualImg = images[product.id];
   const ytThumb = getYtThumbnail(product.ytLink);
   const hasRealImage = manualImg || (product.image && product.image.startsWith('http')) || ytThumb;
+  const altText = `${product.name} - ${product.category} fabric wholesale Surat`;
 
   let visualHtml = '';
   if (manualImg) {
-    visualHtml = `<img src="${manualImg}" alt="${product.name}" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;">`;
+    visualHtml = `<img src="${manualImg}" alt="${altText}" loading="lazy" decoding="async">`;
   } else if (product.image && product.image.startsWith('http')) {
-    visualHtml = `<img src="${product.image}" alt="${product.name}" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;">`;
+    visualHtml = `<img src="${product.image}" alt="${altText}" loading="lazy" decoding="async">`;
   } else if (ytThumb) {
-    visualHtml = `<img src="${ytThumb}" alt="${product.name}" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;">`;
+    visualHtml = `<img src="${ytThumb}" alt="${altText}" loading="lazy" decoding="async">`;
   } else {
     visualHtml = `<div class="product-card-gradient" style="background: ${product.gradient}">${product.icon || '🧵'}</div>`;
   }
 
   const daysDiff = Math.floor((Date.now() - new Date(product.date).getTime()) / (1000 * 60 * 60 * 24));
   const isFresh = Number.isFinite(daysDiff) && daysDiff >= 0 && daysDiff <= 7;
+
+  // Stock status badges
+  const stockStatus = product.stock_status || 'available';
+  const isFeatured = product.is_featured === true || product.is_featured === 'TRUE';
+  let stockBadgeHtml = '';
+  if (stockStatus === 'out_of_stock') {
+    stockBadgeHtml = '<span class="stock-badge out-of-stock">Out of Stock</span>';
+  } else if (stockStatus === 'limited') {
+    stockBadgeHtml = '<span class="stock-badge limited">⚡ Limited Stock</span>';
+  }
+  let featuredBadgeHtml = isFeatured ? '<span class="stock-badge featured">⭐ Featured</span>' : '';
+  // If both featured and stock, show stock badge (takes priority position)
+  if (stockBadgeHtml && featuredBadgeHtml) featuredBadgeHtml = '';
+
+  const isOutOfStock = stockStatus === 'out_of_stock';
 
   return `
     <div class="product-card-3d">
@@ -828,22 +870,23 @@ function createProductCard(product) {
           <span class="product-card-category">${product.category}</span>
           <span class="product-card-date-tag">${formatDateHindi(product.date)}</span>
           ${isFresh ? '<span class="product-card-new">🆕 New</span>' : ''}
+          ${stockBadgeHtml || featuredBadgeHtml}
         </div>
         <div class="product-card-body">
           <div class="product-card-name">${product.name}</div>
           <div class="product-card-name-en">${product.nameEn} — ${product.variety}</div>
           <div class="product-card-meta">
-            ${product.cut && product.cut !== 'N/A' ? `<span class="meta-tag">📏 Cut: ${product.cut}</span>` : ''}
-            ${product.panna && product.panna !== 'N/A' ? `<span class="meta-tag">📐 Panna: ${product.panna}</span>` : ''}
+            ${product.cut && product.cut !== 'N/A' ? `<span class="meta-tag">Cut: ${product.cut}</span>` : ''}
+            ${product.panna && product.panna !== 'N/A' ? `<span class="meta-tag">Panna: ${product.panna}</span>` : ''}
           </div>
           <div class="product-card-price">${product.rate}</div>
           ${product.info ? `<div class="product-card-info">${product.info}</div>` : ''}
           <div class="product-card-actions">
-            ${product.outOfStock ? `
-              <button class="btn btn-sm" disabled style="background:#555; color:#fff; cursor:not-allowed; opacity: 0.8; width: 100%;">🚨 Out of Stock</button>
+            ${isOutOfStock ? `
+              <button class="btn btn-sm" disabled style="background:#555; color:#fff; cursor:not-allowed; opacity: 0.8; width: 100%;">Out of Stock</button>
             ` : `
             <a href="https://wa.me/${whatsappNum}?text=${orderMsg}" target="_blank" class="btn btn-whatsapp btn-sm">
-              📲 Bulk Enquiry
+              Bulk Enquiry
             </a>
             ${product.ytLink ? `
               <a href="${product.ytLink}" target="_blank" class="btn btn-yt btn-sm">▶ Video</a>
@@ -1197,6 +1240,24 @@ function initOrderModal() {
       const address = document.getElementById('customerAddress').value.trim();
       const message = document.getElementById('customerMessage').value.trim();
       const whatsappNum = getWhatsAppNumber();
+      const errorDiv = document.getElementById('formError');
+
+      // Validation
+      if (!name || !phone) {
+        if (errorDiv) {
+          errorDiv.textContent = 'नाम और फ़ोन नंबर ज़रूरी है';
+          errorDiv.classList.add('show');
+        }
+        return;
+      }
+      if (phone.length < 10) {
+        if (errorDiv) {
+          errorDiv.textContent = 'सही फ़ोन नंबर डालें';
+          errorDiv.classList.add('show');
+        }
+        return;
+      }
+      if (errorDiv) errorDiv.classList.remove('show');
 
       let msg = `🛍️ *नया Bulk Enquiry — Aasha Textile*\n\n`;
       msg += `📦 *प्रोडक्ट:* ${selectedProduct.name} (${selectedProduct.nameEn})\n`;
@@ -1362,4 +1423,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initLightbox();
   initScrollReveal();
   initCounters();
+
+  // WhatsApp FAB tooltip auto-show after 3 seconds
+  setTimeout(() => {
+    const tooltip = document.querySelector('.whatsapp-fab-tooltip');
+    if (tooltip) {
+      tooltip.classList.add('auto-show');
+      setTimeout(() => tooltip.classList.remove('auto-show'), 4000);
+    }
+  }, 3000);
 });
