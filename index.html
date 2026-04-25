@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aasha Textile — Premium Cut-Piece Fabrics | Surat</title>
+    <meta name="description" content="Aasha Textile, Surat — Premium quality cut-piece fabrics at wholesale rates. Cotton, Silk, Rayon, Velvet & more. Daily new arrivals. Order via WhatsApp.">
+    <meta name="keywords" content="cut piece cloth, fabric shop Surat, Aasha Textile, Devkishan Sharma, cotton, silk, rayon, wholesale fabric, Surat textile market">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧵</text></svg>">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ======== PRELOADER ======== -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-spinner"></div>
+        <div class="preloader-text">AASHA TEXTILE</div>
+    </div>
+
+    <!-- ======== PARTICLE CANVAS ======== -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- ======== NAVIGATION ======== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="nav-logo">
+                <div class="nav-logo-icon">🧵</div>
+                <span>Aasha Textile</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#products" class="nav-link" data-section="products">Products</a></li>
+                <li><a href="#youtube" class="nav-link" data-section="youtube">Videos</a></li>
+                <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+                <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+                <li>
+                    <a href="https://wa.me/917043830602" target="_blank" class="nav-whatsapp-btn">
+                        📲 WhatsApp
+                    </a>
+                </li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ======== HERO SECTION ======== -->
+    <section class="hero" id="hero">
+        <div class="hero-shape hero-shape-1"></div>
+        <div class="hero-shape hero-shape-2"></div>
+        <div class="hero-shape hero-shape-3"></div>
+
+        <div class="hero-content">
+            <div class="hero-badge">
+                सूरत का भरोसेमंद कपड़ा व्यापारी
+            </div>
+            <h1 class="hero-title">
+                Premium <span class="gold-text">Fabrics</span>,<br>
+                Wholesale <span class="gold-text">Rates</span>
+            </h1>
+            <p class="hero-subtitle">
+                कैमरिक कॉटन, सिल्क, रेयॉन, जापान साटन, मखमल — हर तरह के कट-पीस कपड़े 
+                सीधे सूरत मार्केट से।  व्यापारियों के लिए किलो के हिसाब से bulk माल उपलब्ध।
+            </p>
+            <p class="hero-location">
+                📍 <span>Avadh Ritu Raj Market, Surat</span> &nbsp;|&nbsp; 📞 <span>7043830602</span>
+            </p>
+            <div class="hero-buttons">
+                <a href="#products" class="btn btn-gold">
+                    🛍️ आज का माल देखें
+                </a>
+                <a href="https://wa.me/917043830602?text=नमस्ते%2C%20मुझे%20कपड़े%20के%20बारे%20में%20जानकारी%20चाहिए" target="_blank" class="btn btn-whatsapp">
+                    📲 WhatsApp करें
+                </a>
+                <a href="#youtube" class="btn btn-outline">
+                    ▶ Videos देखें
+                </a>
+            </div>
+        </div>
+
+        <!-- 3D Rotating Cube -->
+        <div class="hero-3d-element">
+            <div class="hero-3d-cube">
+                <div class="hero-3d-face">🧵</div>
+                <div class="hero-3d-face">✂️</div>
+                <div class="hero-3d-face">🪡</div>
+                <div class="hero-3d-face">👗</div>
+            </div>
+        </div>
+
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80 Z" fill="#08080f"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- ======== STATS BAR ======== -->
+    <div class="stats-bar" id="statsBar">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <div class="stat-number" data-count="50">0+</div>
+                    <div class="stat-label">कपड़ों की वैराइटी</div>
+                </div>
+                <div class="stat-item reveal reveal-delay-1">
+                    <div class="stat-number" data-count="365">0</div>
+                    <div class="stat-label">Daily New Arrivals</div>
+                </div>
+                <div class="stat-item reveal reveal-delay-2">
+                    <div class="stat-number">₹100+</div>
+                    <div class="stat-label">Starting Rate/KG</div>
+                </div>
+                <div class="stat-item reveal reveal-delay-3">
+                    <div class="stat-number">⚖️ Bulk</div>
+                    <div class="stat-label">Per KG Supply</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======== PRODUCTS SECTION ======== -->
+    <section class="section timeline-section" id="products">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">📦 हमारा <span class="gold-text">Collection</span></h2>
+                <div class="section-gold-line"></div>
+                <p class="section-subtitle">हर रोज़ नया माल — bulk deal (Per KG) के हिसाब से देखें</p>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="category-filter reveal" id="categoryFilter" style="margin-bottom: 20px;">
+                <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search (e.g. Red Cotton, Satin...)" style="width: 100%; max-width: 400px; padding: 12px 20px; border-radius: 30px; border: 1px solid var(--gold); background: var(--card-bg); color: #fff; font-size: 1rem; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;">
+                <button class="filter-btn active" data-category="all">सभी</button>
+                <button class="filter-btn" data-category="Cotton">🌿 कॉटन</button>
+                <button class="filter-btn" data-category="Silk">✨ सिल्क</button>
+                <button class="filter-btn" data-category="Rayon">🎨 रेयॉन</button>
+                <button class="filter-btn" data-category="Satin">💎 साटन</button>
+                <button class="filter-btn" data-category="Readymade">👗 रेडीमेड</button>
+                <button class="filter-btn" data-category="Curtain">🪟 पर्दा / घरेलू</button>
+                <button class="filter-btn" data-category="Other">🧶 अन्य</button>
+            </div>
+
+            <!-- View Toggle -->
+            <div class="view-toggle reveal">
+                <button class="view-toggle-btn active" data-view="grid" id="viewGrid">📱 Grid View</button>
+                <button class="view-toggle-btn" data-view="timeline" id="viewTimeline">📅 Timeline View</button>
+            </div>
+
+            <!-- Product Grid / Timeline -->
+            <div id="productContainer">
+                <!-- Rendered by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== YOUTUBE SECTION ======== -->
+    <section class="section youtube-section" id="youtube">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">📺 Daily <span class="gold-text">Videos</span></h2>
+                <div class="section-gold-line"></div>
+                <p class="section-subtitle">हर रोज़ नए माल की वीडियो — देखें और ऑर्डर करें</p>
+            </div>
+
+            <div class="yt-channel-header reveal">
+                <div class="yt-channel-info">
+                    <div class="yt-channel-icon">▶</div>
+                    <div>
+                        <div class="yt-channel-name">Aasha Textile</div>
+                        <div class="yt-channel-handle">@aasarextile</div>
+                    </div>
+                </div>
+                <a href="https://youtube.com/@aasarextile?sub_confirmation=1" target="_blank" class="btn btn-outline btn-sm" style="border-color: #ff0000; color: #ff4444;">
+                    ▶ Subscribe करें
+                </a>
+            </div>
+
+            <div class="yt-grid" id="youtubeGrid">
+                <!-- Rendered by JS -->
+            </div>
+
+            <div class="yt-subscribe-row reveal">
+                <a href="https://youtube.com/@aasarextile" target="_blank" class="btn btn-outline">
+                    📺 सभी वीडियो देखें →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== FABRIC CARE / TRUST SECTION ======== -->
+    <section class="section fabric-care-section" id="care">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">🧵 Fabric <span class="gold-text">Care Tips</span></h2>
+                <div class="section-gold-line"></div>
+                <p class="section-subtitle">कपड़ा खरीदने से पहले और बाद में ये छोटी बातें आपका नुकसान बचाती हैं।</p>
+            </div>
+            <div class="fabric-care-grid">
+                <div class="fabric-tip reveal">
+                    <div class="fabric-tip-icon">🌈</div>
+                    <h3>पहले कलर टेस्ट</h3>
+                    <p>पहली धुलाई से पहले हल्का color bleed check करें। bulk cutting से पहले sample wash करें।</p>
+                </div>
+                <div class="fabric-tip reveal reveal-delay-1">
+                    <div class="fabric-tip-icon">📏</div>
+                    <h3>कट और पन्ना verify करें</h3>
+                    <p>मीटर और width confirm करके ही parcel finalize करें, खासकर resale और boutique orders में।</p>
+                </div>
+                <div class="fabric-tip reveal reveal-delay-2">
+                    <div class="fabric-tip-icon">🧴</div>
+                    <h3>Proper washing method</h3>
+                    <p>Soft fabrics (silk/georgette) के लिए mild detergent और हल्की धुलाई इस्तेमाल करें।</p>
+                </div>
+                <div class="fabric-tip reveal reveal-delay-3">
+                    <div class="fabric-tip-icon">📦</div>
+                    <h3>Storage smart रखें</h3>
+                    <p>Fabric को direct sunlight से दूर और dry जगह में fold करके रखें, quality लंबे समय तक रहती है।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== ABOUT SECTION ======== -->
+    <section class="section about-section" id="about">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">🏪 हमारे <span class="gold-text">बारे में</span></h2>
+                <div class="section-gold-line"></div>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-visual reveal">
+                    <div class="about-card-3d">
+                        <div class="about-card" id="aboutCard">
+                            <div class="about-owner-photo-wrap">
+                                <img src="admin-photo.jpg" alt="Devkishan Sharma" class="about-owner-photo" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.classList.add('fallback');">
+                                <span class="about-shop-icon">🏪</span>
+                            </div>
+                            <h3>Aasha Textile</h3>
+                            <p class="about-owner">by Devkishan Sharma</p>
+                            <div class="about-address">
+                                📍 Shop No. 4097, 4th Floor<br>
+                                Avadh Ritu Raj Market<br>
+                                Near Maharana Pratap Chowk<br>
+                                Surat, Gujarat
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-info reveal reveal-delay-1">
+                    <h2>भरोसेमंद Quality,<br><span class="gold-text">सीधी Deal</span></h2>
+                    <p>
+                        आशा टेक्सटाइल में हम सूरत के बेहतरीन कट-पीस कपड़े सीधे होलसेल रेट पर उपलब्ध कराते हैं।
+                        हर रोज़ YouTube पर नए माल की वीडियो आती है — आप देखें, पसंद करें, और WhatsApp पर ऑर्डर करें।
+                        कैमरिक कॉटन से लेकर जापान साटन, मखमल, ब्रासो — सब कुछ एक ही जगह।
+                    </p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="about-feature-icon">📹</div>
+                            <span>Daily YouTube Updates</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">💰</div>
+                            <span>Wholesale Rates</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">📲</div>
+                            <span>WhatsApp Ordering</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">🚚</div>
+                            <span>All India Delivery</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">✅</div>
+                            <span>Quality Guaranteed</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">🎯</div>
+                            <span>50+ Varieties</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== CONTACT SECTION ======== -->
+    <section class="section contact-section" id="contact">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">📞 <span class="gold-text">संपर्क</span> करें</h2>
+                <div class="section-gold-line"></div>
+                <p class="section-subtitle">छोटे व्यापारियों के लिए wholesale bulk booking — तुरंत बात करें</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-card reveal">
+                    <div class="contact-card-icon">📲</div>
+                    <h3>WhatsApp / Call (Bulk Only)</h3>
+                    <p>
+                        कोई भी कपड़ा पसंद आए — किलो के हिसाब से rate और stock confirm करें।<br>
+                        <small style="color:var(--text-muted)">Note: single piece retail नहीं, bulk supply model है।</small><br>
+                        <strong style="color:var(--gold)">📞 7043830602</strong>
+                    </p>
+                    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
+                        <a href="https://wa.me/917043830602?text=नमस्ते%2C%20मुझे%20कपड़े%20के%20बारे%20में%20जानकारी%20चाहिए" target="_blank" class="btn btn-whatsapp btn-sm">
+                            📲 WhatsApp
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-card reveal reveal-delay-1">
+                    <div class="contact-card-icon">🏬</div>
+                    <h3>Shop Address</h3>
+                    <p>
+                        AASHA TEXTILE<br>
+                        Shop No. 4097, 4th Floor<br>
+                        Avadh Ritu Raj Market<br>
+                        Near Maharana Pratap Chowk, Surat
+                    </p>
+                    <a href="https://maps.app.goo.gl/P3PZbkX4ZzjB4wXUA" target="_blank" class="btn btn-outline">
+                        📍 Google Maps पर देखें
+                    </a>
+                </div>
+                <div class="contact-card reveal reveal-delay-2">
+                    <div class="contact-card-icon">📱</div>
+                    <h3>Social Media</h3>
+                    <p>
+                        हमें Social Media पर follow करें — रोज़ नए अपडेट्स!
+                    </p>
+                    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
+                        <a href="https://youtube.com/@aasarextile" target="_blank" class="btn btn-outline btn-sm" style="border-color:#ff0000;color:#ff4444;">
+                            ▶ YouTube
+                        </a>
+                        <a href="https://instagram.com/dekrishansharma?igsh=cmhyNXc4cWptZm8y" target="_blank" class="btn btn-outline btn-sm" style="border-color:#e1306c;color:#e1306c;">
+                            📷 Instagram
+                        </a>
+                        <a href="https://facebook.com/share/15oyioSVS5" target="_blank" class="btn btn-outline btn-sm" style="border-color:#1877f2;color:#1877f2;">
+                            👍 Facebook
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ======== FOOTER ======== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>🧵 Aasha Textile</h3>
+                    <p>
+                        सूरत का भरोसेमंद कट-पीस कपड़ा व्यापारी। 
+                        Premium quality, wholesale rates, daily new arrivals।
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#youtube">Videos</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="https://youtube.com/@aasarextile" target="_blank">📺 YouTube</a></li>
+                        <li><a href="https://instagram.com/dekrishansharma?igsh=cmhyNXc4cWptZm8y" target="_blank">📷 Instagram</a></li>
+                        <li><a href="https://facebook.com/share/15oyioSVS5" target="_blank">👍 Facebook</a></li>
+                        <li><a href="https://wa.me/917043830602" target="_blank">📲 WhatsApp</a></li>
+                        <li><a href="tel:+917043830602">📞 7043830602</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Aasha Textile by Devkishan Sharma. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ======== WHATSAPP FAB ======== -->
+    <a href="https://wa.me/917043830602?text=नमस्ते%2C%20मुझे%20कपड़े%20के%20बारे%20में%20जानकारी%20चाहिए" target="_blank" class="whatsapp-fab" id="whatsappFab">
+        💬
+        <span class="whatsapp-fab-tooltip">WhatsApp पर बात करें</span>
+    </a>
+
+    <!-- ======== ORDER MODAL ======== -->
+    <div class="modal-overlay" id="orderModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>📲 WhatsApp पर Bulk Enquiry भेजें</h3>
+                <button class="modal-close" id="modalClose">✕</button>
+            </div>
+            <div class="modal-body">
+                <div id="modalProductInfo"></div>
+                <form id="orderForm">
+                    <div class="form-group">
+                        <label for="customerName">आपका नाम *</label>
+                        <input type="text" id="customerName" placeholder="अपना नाम लिखें" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerPhone">फ़ोन नंबर *</label>
+                        <input type="tel" id="customerPhone" placeholder="अपना फ़ोन नंबर लिखें" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerAddress">पता (Delivery के लिए)</label>
+                        <textarea id="customerAddress" placeholder="अपना पूरा पता लिखें"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerMessage">कितना चाहिए / कोई सवाल</label>
+                        <textarea id="customerMessage" placeholder="जैसे: 5 मीटर चाहिए, कोई और रंग है क्या?"></textarea>
+                    </div>
+                    <button type="submit" class="btn-send-order">
+                        📲 WhatsApp पर भेजें
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======== IMAGE LIGHTBOX ======== -->
+    <div class="lightbox-overlay" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">✕</button>
+        <div class="lightbox-content">
+            <img id="lightboxImg" src="" alt="Full size image">
+        </div>
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+
+    <script src="direct-updates.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
